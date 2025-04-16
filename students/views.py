@@ -6,7 +6,8 @@ from .forms import CreateStudent
 
 # Create your views here.
 def student_list(request):
-    students = StudentInfo.objects.all()
+    # students = StudentInfo.objects.all()
+    students = StudentInfo.objects.order_by('id')  # or another field
     paginator = Paginator(students, 10)
     page = request.GET.get('page')
     paged_students = paginator.get_page(page)
